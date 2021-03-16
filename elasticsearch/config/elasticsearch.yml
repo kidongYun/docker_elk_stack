@@ -1,13 +1,11 @@
 ---
-## Default Elasticsearch configuration from Elasticsearch base image.
-## https://github.com/elastic/elasticsearch/blob/master/distribution/docker/src/docker/config/elasticsearch.yml
+## Default Elasticsearch configuration from elasticsearch-docker.
+## from https://github.com/elastic/elasticsearch-docker/blob/master/.tedi/template/elasticsearch.yml
 #
 cluster.name: "docker-cluster"
 network.host: 0.0.0.0
 
-## X-Pack settings
-## see https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-xpack.html
+## Use single node discovery in order to disable production mode and avoid bootstrap checks
+## see https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
 #
-xpack.license.self_generated.type: trial
-xpack.security.enabled: true
-xpack.monitoring.collection.enabled: true
+discovery.type: single-node
